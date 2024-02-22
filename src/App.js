@@ -5,7 +5,7 @@ import LoginSignUp from './Components/LoginSignUp';
 import StudentPage from './Components/StudentPage';
 import TeacherPage from './Components/TeacherPage';
 import AdminPage from './Components/AdminPage';
-
+import Test from './Components/Test';
 function App() {
   return (
     <Router>
@@ -14,7 +14,8 @@ function App() {
           <Route path="/Studentpage" element={<StudentPage />} />
           <Route path="/Teacherpage" element={<TeacherPage />} />
           <Route path="/Adminpage" element={<AdminPage />} />
-          <Route path="/" element={<LoginSignUp />} />
+          <Route path="/login" element={<LoginSignUp />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
       </div>
     </Router>
