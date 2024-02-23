@@ -1,6 +1,6 @@
 import React from 'react';
 
-function StudentPage() {
+function TeacherPage() {
   return (
     <div style={{ backgroundColor: 'white' }}>
       <h1>Hello Teacher!</h1>
@@ -8,4 +8,4 @@ function StudentPage() {
   );
 }
 
-export default StudentPage;
+export default TeacherPage;

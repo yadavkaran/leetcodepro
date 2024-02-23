@@ -1,70 +1,52 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Carousel from 'react-bootstrap/Carousel';
-import BannerImage1 from '../Assets/banner1.jpg';
-import BannerImage2 from '../Assets/banner2.jpg';
-import BannerImage3 from '../Assets/banner3.jpg';
+import { Navbar, Nav } from 'react-bootstrap';
+import CustomSidenav from './CustomSidenav';
 
-function CollapsibleExample() {
-  const carouselHeight = '700px';
+const StudentPage = () => {
+
+
+  const sidenavStyle = {
+    width: '240px',
+    height: '100vh',
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    marginTop: '70px',
+
+  };
+
+  const contentStyle = {
+    marginLeft: '240px',
+    padding: '20px',
+    flex: '1', 
+    marginTop: '50px',// Allow the content to take up remaining space
+  };
 
   return (
-    <>
+          <>
        <Navbar collapseOnSelect expand="lg" className="bg-dark" variant="dark" fixed="top">
         <Navbar.Brand to="/home" className='ps-5'>Leetcode Pro</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <NavLink to="/home" className="nav-link">Home</NavLink>
-            <NavLink to="/about" className="nav-link">About Us</NavLink>
-            <NavLink to="/login" className="nav-link">Login</NavLink>
+            <NavLink to="/login" className="nav-link">Logout</NavLink>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
 
-      <Carousel style={{ height: carouselHeight }}>
-        <Carousel.Item style={{ height: carouselHeight }}>
-          <img
-            className="d-block w-100"
-            src={BannerImage1}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item style={{ height: carouselHeight }}>
-          <img
-            className="d-block w-100"
-            src={BannerImage2}
-            alt="Second slide"
-          />
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item style={{ height: carouselHeight }}>
-          <img
-            className="d-block w-100"
-            src={BannerImage3}
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-
-      <div style={{ backgroundColor: 'blue' }}>
-        {/* Content of the last div */}
-        <p>This is the last div with a blue background.</p>
+      <div style={sidenavStyle}>
+        <CustomSidenav />
       </div>
-    </>
+ 
+        <div style={contentStyle}>
+          {/* Your StudentPage content goes here */}
+          <h2>Student Page</h2>
+          <p>This is the content of the Student Page.</p>
+          {/* Add more content as needed */}
+          </div>
+          </>
   );
-}
+};
 
-export default CollapsibleExample;
+export default StudentPage;
