@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as Components from '../Components';
-
+import { NavLink } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
 
 
 function LoginSignUp() {
@@ -11,7 +12,6 @@ function LoginSignUp() {
         // Perform authentication logic here
         // For simplicity, let's assume some predefined username/password combinations
         if (username === "student" && password === "student") {
-            console.log("Invalid credentials");
             navigate("/Studentpage");
         } else if (username === "teacher" && password === "teacher") {
             navigate("/Teacherpage");
@@ -30,6 +30,22 @@ function LoginSignUp() {
     };
 
     return (
+<>
+<div style={{marginBottom:"50px"}}>
+         <Navbar collapseOnSelect expand="lg" className="bg-dark" variant="dark" fixed="top">
+        <Navbar.Brand to="/" className='ps-5'>Leetcode Pro</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="ms-auto">
+            <NavLink to="/" className="nav-link">Home</NavLink>
+            <NavLink to="/about" className="nav-link">About Us</NavLink>
+            <NavLink to="/login" className="nav-link">Login</NavLink>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+
+    </div>
+       
         <div style={{ display: "flex" , alignItems:"center", justifyContent: "center", flexDirection: "column", height:"100vh", margin: "-20px 0 50px", backgroundSize:"cover" }}>
             <Components.Container>
                 <Components.SignUpContainer signinIn={signIn}>
@@ -86,6 +102,8 @@ function LoginSignUp() {
                 </Components.OverlayContainer>
             </Components.Container>
         </div>
+</>
+    
     )
 }
 
