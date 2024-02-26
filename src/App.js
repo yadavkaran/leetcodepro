@@ -12,6 +12,9 @@ import Designprinciples from './Components/Quiz/DesignPrinciples';
 import Home from './Components/Home';
 import AddQuestionForm from './Components/AddQuestionForm';
 import PendingApproval from './Components/PendingApproval';
+import ExportQuiz from './Components/ExportQuiz';
+import PreviewQuiz from './Components/PreviewQuiz';
+import SubTopics from './Components/SubTopics';
 function App() {
   return (
     
@@ -29,6 +32,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Adminpage/AddQuestion" element={<AddQuestionForm />} />
           <Route path="/Adminpage/PendingApproval" element={<PendingApproval />} />
+          <Route path="/ExportQuiz" element={<ExportQuiz />} />
+          <Route path="/PreviewQuiz" element={<PreviewQuiz />} />
+          <Route path="/SubTopics" element={<SubTopics />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </div>
     </Router>

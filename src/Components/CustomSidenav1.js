@@ -34,7 +34,7 @@ const CustomSidenav1 = ({ expanded, onSelect, activeKey }) => {
   
     switch (eventKey) {
       case '1':
-        navigate('/');
+        navigate('/Adminpage');
         break;
       case 'add_question':
         if (currentPathname !== '/Adminpage/AddQuestion') {
