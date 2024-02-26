@@ -33,7 +33,7 @@ function TeacherPage() {
       </Navbar.Collapse>
     </Navbar><div style={sidenavStyle}>
         <SideNavTeacher/>
-      </div><div style={contentStyle}>
+      </div><div>
         <TeacherHome />
 
       </div>
