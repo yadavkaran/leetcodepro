@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import SideNavTeacher from './SidenavTeacher';
-import Footer from './Footer';
+
 
 function SubTopics() {
   const carouselHeight = '700px';
@@ -94,9 +94,7 @@ const courses = [
                     </div>
                 ))}</div>
             </div>
-    <div style={{ textAlign: 'center', margin: '20px', padding: '10px', backgroundColor: '#f8f9fa', borderRadius: '8px',color:'black' }}>
-      <Footer />
-      </div></>
+            </>
   );
 }
 
