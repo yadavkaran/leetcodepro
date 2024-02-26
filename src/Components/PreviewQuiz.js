@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import SideNavTeacher from './SidenavTeacher';
-import TeacherHome from './TeacherHome';
+import QuizPreview from './QuizPreview';
 import Footer from './Footer';
 
-function TeacherPage() {
+
+
+function PreviewQuiz() {
   const sidenavStyle = {
     width: '240px',
     height: '100vh',
@@ -16,9 +18,10 @@ function TeacherPage() {
 
   };
   
+
   const contentStyle = {
-    marginLeft: '240px',
-    padding: '20px',
+    marginLeft: '340px',
+    padding: '50px',
     flex: '1', 
     marginTop: '50px',// Allow the content to take up remaining space
   };
@@ -34,11 +37,15 @@ function TeacherPage() {
     </Navbar><div style={sidenavStyle}>
         <SideNavTeacher/>
       </div><div style={contentStyle}>
-        <TeacherHome />
-
+        {/* Your StudentPage content goes here */}
+        {/* Add more content as needed */}
+        <QuizPreview />
+      </div>
+      <div style={{ textAlign: 'center', margin: '20px', padding: '10px', backgroundColor: '#f8f9fa', borderRadius: '8px',color:'black' }}>
+      <Footer />
       </div>
       </>
   );
 }
 
-export default TeacherPage;
+export default PreviewQuiz;
