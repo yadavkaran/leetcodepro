@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, Card, Button } from 'react-bootstrap';
-import CustomSidenav from './CustomSidenav';
 import OS from '../Assets/os.png';
 import DS from '../Assets/ds.png';
 import PL from '../Assets/pl.png';

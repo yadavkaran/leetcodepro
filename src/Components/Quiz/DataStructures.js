@@ -119,7 +119,7 @@ const StudentPage = () => {
                                 <Card.Text>
                                     Questions: {course.questions} | Solved: {course.Solved}
                                 </Card.Text>
-                                <ProgressBar now={course.progress} />
+                                <ProgressBar now={(course.Solved / course.questions) * 100} label={`${((course.Solved / course.questions) * 100).toFixed(2)}%`} />
                             </Card.Body>
                         </Card>
                     </div>
