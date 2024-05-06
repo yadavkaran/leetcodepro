@@ -15,6 +15,11 @@ import PendingApproval from './Components/PendingApproval';
 import ExportQuiz from './Components/ExportQuiz';
 import PreviewQuiz from './Components/PreviewQuiz';
 import SubTopics from './Components/SubTopics';
+import Books from './Components/Books';
+import Websites from './Components/Websites';
+import Videos from './Components/Videos';
+import ExamPage from './Components/ExamPage';
+
 function App() {
   return (
     
@@ -26,6 +31,9 @@ function App() {
           <Route path="/Studentpage/Quiz/Coding" element={<Coding />} />
           <Route path="/Studentpage/Quiz/DBMS" element={<Dbms />} />
           <Route path="/Studentpage/Quiz/DesignPrinciples" element={<Designprinciples />} />
+          <Route path="/Studentpage/Refrences/Books" element={<Books />} />
+          <Route path="/Studentpage/Refrences/Websites" element={<Websites />} />
+          <Route path="/Studentpage/Refrences/Videos" element={<Videos />} />
           <Route path="/Teacherpage" element={<TeacherPage />} />
           <Route path="/Adminpage" element={<AdminPage />} />
           <Route path="/login" element={<LoginSignUp />} />
@@ -35,6 +43,7 @@ function App() {
           <Route path="/ExportQuiz" element={<ExportQuiz />} />
           <Route path="/PreviewQuiz" element={<PreviewQuiz />} />
           <Route path="/SubTopics" element={<SubTopics />} />
+          <Route path="/PracticeExam" element={<ExamPage/>} />
           <Route path="/" element={<Home />} />
         </Routes>
       </div>

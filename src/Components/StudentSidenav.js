@@ -43,6 +43,19 @@ const CustomSidenav = ({ appearance, openKeys, expanded, onOpenChange, onExpand,
       case '2-4':
         navigate('/Studentpage/Quiz/DesignPrinciples');
         break;
+      case '3-1':
+        navigate('/PracticeExam');
+        break;
+      case '4-1':
+        navigate('/Studentpage/Refrences/Books');
+        break;
+      case '4-2':
+        navigate('/Studentpage/Refrences/Websites');
+        break;
+      case '4-3':
+        navigate('/Studentpage/Refrences/Videos');
+        break;
+
       // Add more cases for other event keys as needed
       default:
         break;
@@ -58,7 +71,7 @@ const CustomSidenav = ({ appearance, openKeys, expanded, onOpenChange, onExpand,
         onOpenChange={onOpenChange}
       >
         <Sidenav.Body>
-          <Nav {...navProps}  onSelect={handleNavItemSelect}>
+          <Nav {...navProps} onSelect={handleNavItemSelect}>
             <Nav.Item eventKey="1" active icon={<DashboardIcon />}>
               LeetCode
             </Nav.Item>

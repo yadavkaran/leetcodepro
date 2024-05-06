@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import SideNavTeacher from './SidenavTeacher';
 import TeacherHome from './TeacherHome';
-import Footer from './Footer';
 
 function TeacherPage() {
   const sidenavStyle = {

@@ -114,7 +114,8 @@ const StudentPage = () => {
             </div>
 
             <div style={{marginLeft: '240px', padding: '25px', marginTop: '50px', maxWidth: '75%'}}>
-                <h1>Data Structures </h1>
+                <h1>Data Structures</h1>
+
                 {!selectedTopic && (
                     <div className="row">
                         {courses.map((course, index) => (
@@ -135,6 +136,7 @@ const StudentPage = () => {
                                 </Card>
                             </div>
                         ))}
+{/* >>>>>>> refs/remotes/origin/master */}
                     </div>
                 )}
                 {loading && <Alert variant="info">Loading...</Alert>}

@@ -55,17 +55,6 @@ function QuizForm() {
           {/* Add more topics as needed */}
         </DropdownButton>
       </FormGroup>
-      <FormGroup>
-        <FormLabel>Select Sub Topic</FormLabel>
-        <DropdownButton id="dropdown-sub-topic" title={subTopic || "Select Sub Topic"}>
-          {/* Render subtopics dynamically based on selected topic */}
-          <Dropdown.Item onClick={() => handleSubTopicChange('Sub Topic 1')}>C</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleSubTopicChange('Sub Topic 1')}>C++</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleSubTopicChange('Sub Topic 1')}>Java</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleSubTopicChange('Sub Topic 1')}>Python</Dropdown.Item>
-          {/* Add more subtopics as needed */}
-        </DropdownButton>
-      </FormGroup>
       <FormGroup style={{ marginBottom: '20px' }}>
         <FormLabel style={{ width: '50%', marginRight: '10px' }}>No of Questions</FormLabel>
         <FormControl
