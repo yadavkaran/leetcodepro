@@ -1,19 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Alert } from 'react-bootstrap';
 
-const Questionnaire = ({ questions }) => {
+const Questionnaire = ({ questions, studentId, setQSolved }) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [answerSubmitted, setAnswerSubmitted] = useState(false);
     const [attemptsLeft, setAttemptsLeft] = useState(3);
+    const [solvedQuestions, setSolvedQuestions] = useState([]);
 
-    if (!questions || questions.length === 0) return <div>No questions available.</div>;
+    useEffect(() => {
+        fetch(`http://localhost:8000/solved-questions/${studentId}`)
+            .then(response => {
+                if (response.ok) return response.json();
+                throw new Error('Failed to fetch solved questions');
+            })
+            .then(data => setSolvedQuestions(data))
+            .catch(error => console.error('Error fetching solved questions:', error));
+    }, [studentId]);
 
-    const handleAnswerSubmit = () => {
+    useEffect(() => {
+        const isSolved = solvedQuestions.includes(questions[currentQuestionIndex]?.QuestionId);
+        setQSolved(isSolved);
+    }, [solvedQuestions, currentQuestionIndex, setQSolved, questions]);
+
+    if (!questions || questions.length === 0) {
+        return <div>No questions available.</div>;
+    }
+
+    const handleAnswerSubmit = async () => {
         setAnswerSubmitted(true);
         const correctAnswer = questions[currentQuestionIndex][`Option${questions[currentQuestionIndex].Answer}`];
         if (selectedAnswer === correctAnswer) {
             alert("Correct answer!");
+            const payload = JSON.stringify({
+                studentId,
+                questionIds: [questions[currentQuestionIndex].QuestionId]
+            });
+
+            try {
+                const response = await fetch('http://localhost:8000/submit-answers', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: payload
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log('Submission success:', result);
+            } catch (error) {
+                console.error('Error submitting answers frontEnd:', error);
+            }
         } else {
             setAttemptsLeft(prev => prev - 1);
             alert("Wrong answer. Attempts left: " + (attemptsLeft - 1));
@@ -38,9 +79,15 @@ const Questionnaire = ({ questions }) => {
         }
     };
 
+    const isSolved = solvedQuestions.includes(questions[currentQuestionIndex].QuestionId);
+    // const isSolved = true
+    setQSolved(isSolved)
     return (
         <div>
-            <div className="question-container">
+            <div className="question-container" style={{ position: 'relative' }}>
+                {solvedQuestions.includes(questions[currentQuestionIndex]?.QuestionId) && (
+                    <span style={{ position: 'absolute', right: 0, top: '-20px', backgroundColor: 'lightgreen', padding: '5px' }}>Solved</span>
+                )}
                 <textarea
                     className="form-control"
                     rows="4"
@@ -49,19 +96,25 @@ const Questionnaire = ({ questions }) => {
                 />
             </div>
             <div className="answers-container">
-                {["Option1", "Option2", "Option3", "Option4"].map((option, index) => (
-                    questions[currentQuestionIndex][option] && <div key={index} className="answer-option">
-                        <input
-                            type="radio"
-                            id={`answer-${index}`}
-                            name="answers"
-                            disabled={answerSubmitted}
-                            onChange={() => setSelectedAnswer(questions[currentQuestionIndex][option])}
-                            checked={selectedAnswer === questions[currentQuestionIndex][option]}
-                        />
-                        <label htmlFor={`answer-${index}`}>{questions[currentQuestionIndex][option]}</label>
-                    </div>
-                ))}
+                {["Option1", "Option2", "Option3", "Option4"].map((option, index) => {
+                    const optionValue = questions[currentQuestionIndex][option];
+                    if (optionValue) {
+                        return (
+                            <div key={index} className="answer-option" >
+                                <input
+                                    type="radio"
+                                    id={`answer-${index}`}
+                                    name="answers"
+                                    disabled={answerSubmitted}
+                                    onChange={() => setSelectedAnswer(optionValue)}
+                                    checked={selectedAnswer === optionValue}
+                                />
+                                <label htmlFor={`answer-${index}`}>{optionValue}</label>
+                            </div>
+                        );
+                    }
+                    return null;
+                })}
             </div>
             <div>
                 <Button variant="primary" onClick={handleAnswerSubmit} disabled={!selectedAnswer || answerSubmitted}>

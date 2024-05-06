@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, Card, ProgressBar, Alert } from 'react-bootstrap';
@@ -11,8 +10,15 @@ const StudentPage = () => {
     const [questions, setQuestions] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [isQSolved, setQSolved] = useState(false);
 
     const courses = [
+        {
+            title: 'Array',
+            questions: 50,
+            Solved: 20,
+            progress: 40,
+        },
         {
             title: 'Array',
             questions: 50,
@@ -108,7 +114,7 @@ const StudentPage = () => {
             </div>
 
             <div style={{marginLeft: '240px', padding: '25px', marginTop: '50px', maxWidth: '75%'}}>
-                <h1>Data Structures</h1>
+                <h1>Data Structures </h1>
                 {!selectedTopic && (
                     <div className="row">
                         {courses.map((course, index) => (
@@ -134,7 +140,7 @@ const StudentPage = () => {
                 {loading && <Alert variant="info">Loading...</Alert>}
                 {error && <Alert variant="danger">{error}</Alert>}
                 {selectedTopic && questions.length > 0 && (
-                    <Questionnaire questions={questions} />
+                    <Questionnaire questions={questions} studentId={1} setQSolved={setQSolved} />
                 )}
             </div>
         </>
